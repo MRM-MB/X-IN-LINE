@@ -1,0 +1,30 @@
+HunterBot Logic
+(Its called HunterBot because it hunts for the best moves by looking at neighbors instead of the whole board)
+
+1. Initialize (init_board)
+   Stores board dims (c, r), win length (w), and obstacles in self.b
+   self.ops tracks opponent IDs
+
+2. Update (notify_move)
+   Updates self.b with new move m
+   Adds pid to self.ops if its an enemy
+
+3. Move Selection (make_a_move)
+   Candidates (cands): Only checks empty spots touching existing pieces (neighbors)
+   First Move: If cands empty, picks center (c//2, r//2)
+   Scoring Loop:
+     Calculates my_s (my potential) and opp_s (max enemy threat) via eval()
+     Win Now: If my_s >= 1e5, return m immediatly
+     Block Win: If opp_s >= 1e5, set s = 50000 (High priority)
+     Block Trap: If opp_s >= 5000 (Open 3), set s = 20000
+     Normal: s = my_s * 2 + opp_s (Balance attack/defense)
+
+4. Evaluation (eval)
+   Scans 4 directions: (1,0) (Horz), (0,1) (Vert), (1,1), (1,-1) (Diags)
+   Ray Casting: Loops while neighbors match player p. Counts length l
+   Open Ends: Checks if ends are empty (e)
+   Points:
+     l >= w: Win (100,000)
+     l == w-1 and e > 0: Open 4 (5,000)
+     l == w-2 and e == 2: Open 3 (1,000)
+     Else: l**3 + e

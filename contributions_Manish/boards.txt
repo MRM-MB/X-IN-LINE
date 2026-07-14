@@ -1,0 +1,37 @@
+ === Manish Maps Explained ===
+
+1. Snoopy Christmas Map (snoopy_christmas)
+   64x59 squares.
+   The win length is 5.
+   Because its so big, bots that scan the whole board might get slow. But bots like HunterBot that only look at neighbors have a huge advantage here. This forces students to make smarter bots that dont waste time looking at empty space.
+
+   Disadvantages for current bots:
+   - Random/SmartRandom: The board is huge. Random moves are like finding a needle in a haystack. They will almost never connect 5 in a row by luck.
+   - WalkingBot: It blindly fills the board row by row. It will spend the whole game playing in the top-left corner while the opponent wins easily somewhere else.
+   - DiagonalBot: Similar to WalkingBot, it just fills diagonals starting from the corner. It ignores the opponent completely, which is a death sentence on a big map.
+   - HunterBot: It's smarter because it looks near other pieces, but it can get "tunnel vision". It might focus too much on one small battle and miss a threat happening on the other side of the board.
+
+2. Portal Map (portal)
+   15x15 squares.
+   This map is technically divided into 5 separate rooms: 4 small corners (3x3) and 1 big center (5x5).
+   The win length is 4.
+   The trick to win: You CANNOT win inside a corner room because they are only 3 wide.
+   To win, u MUST play in the center room OR connect a line from a corner into the center through the tiny 1-block gaps ("portals").
+   So the only way to win is to control the portals or the center.
+
+   Disadvantages for current bots:
+   - Random/SmartRandom: They are doomed. They will happily play in the corner rooms forever, not realizing they can never get 4 in a row there because the rooms are only 3x3.
+   - WalkingBot: It starts at the top-left corner (0,0). That corner is a 3x3 room. It will fill that room, realize it can't win, and then just keep filling rows. It has no idea about the "portals".
+   - DiagonalBot: It loves diagonals, but the corner rooms are too small for a diagonal win (max length 3). It will likely get stuck hitting walls inside the small rooms.
+   - HunterBot: It only looks at neighbors. If the game starts in a corner, it might get stuck fighting in that small room. Unless someone plays near a "portal", it might never realize there is a whole center room to play in.
+
+3. Ginger Bread Cookies Map (CustomBoard)
+   35x102 squares.
+   This map is very tall and narrow, filled with scattered obstacles.
+   The win length is 5.
+   
+   Disadvantages for current bots:
+   - WalkingBot: It scans row by row. With so many obstacles, it will waste many turns trying to play in spots that are already blocked or have no potential for a line.
+   - DiagonalBot: This map is a nightmare for diagonals. The obstacles break up long lines constantly. It will likely keep hitting walls.
+   - Random/SmartRandom: They will just play randomly into walls or small gaps where they can't win.
+   - HunterBot: It might do okay if it finds an open area, but it could also get trapped in a small "room" of obstacles. It needs to be careful not to get boxed in.

@@ -83,7 +83,7 @@ python tools/board_designer/board_designer.py
 
 The designer uses Tkinter, which is included with most standard Python installations.
 
-## Contribute
+## 👥 Contribute
 
 Bots, boards, bug fixes, documentation improvements, and tournament ideas are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 

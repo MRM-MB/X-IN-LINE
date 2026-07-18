@@ -1,4 +1,4 @@
-# X-in-Line: Computer Systems Challenge 🩻
+# 🩻 X-in-Line: Computer Systems Challenge
 
 ![X-in-Line board](assets/x-in-line.png)
 
